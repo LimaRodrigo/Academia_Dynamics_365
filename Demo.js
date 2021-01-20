@@ -3,7 +3,10 @@ if (typeof (Demo) === "undefined") { Demo = {}; }
 
 Demo.Conta = {
 
+    formContext: {},
+
     OnLoad: function (formContext) {
+        this.formContext = formContext;
     },
 
     OnChange: function () {
@@ -11,6 +14,24 @@ Demo.Conta = {
 
     OnSave: function () {
     },
+
+
+    /**
+     * Demostração do CRUD 
+     */
+
+    Create: function () {
+
+    },
+    Read: function () {
+
+    },
+    Update: function () {
+
+    },
+    Delete: function () {
+
+    }
 
 
 
