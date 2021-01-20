@@ -1,0 +1,18 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JS", "JS", "{67D06816-8751-4ACE-B9CC-88220B7C03D2}"
+	ProjectSection(SolutionItems) = preProject
+		..\JS\Conta.js = ..\JS\Conta.js
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {19925523-4606-4841-8EE5-A5F87E272144}
+	EndGlobalSection
+EndGlobal
