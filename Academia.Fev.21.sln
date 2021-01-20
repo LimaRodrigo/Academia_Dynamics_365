@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JS", "JS", "{67D06816-8751-4ACE-B9CC-88220B7C03D2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JS", "JS", "{317E2880-32C1-45A1-9105-449694822EDA}"
 	ProjectSection(SolutionItems) = preProject
-		..\JS\Conta.js = ..\JS\Conta.js
+		Demo.js = Demo.js
 	EndProjectSection
 EndProject
 Global
