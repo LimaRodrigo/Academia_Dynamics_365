@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JS", "JS", "{317E2880-32C1-45A1-9105-449694822EDA}"
 	ProjectSection(SolutionItems) = preProject
 		Demo.js = Demo.js
+		Helper.js = Helper.js
 	EndProjectSection
 EndProject
 Global
