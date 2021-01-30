@@ -69,6 +69,22 @@ Demo.Helper = {
         });
     },
     /**
+     * Retorna um array de objetos de acordo com a busca, na chamada é necessário chamar dentro de um try-catch e utilizar await na frente para aguardar o resultado. 
+     * Mais detalhes no Link: 
+     * https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/xrm-webapi/retrievemultiplerecords
+     * @param {string} nomeEntidade - Nome Lógico da Entidade 
+     * @param {string} optionOdata - Passa estruta odata completa com select, filter, top, etc ex.:?$select=name&$filter=campo eq 'teste' &$top=2
+     * @returns {object}
+     */
+    RetornarRegistrosAsync: function (nomeEntidade, optionOdata) {
+        return new Promise((resolve, reject) => {
+            Xrm.WebApi.retrieveMultipleRecords(nomeEntidade, optionOdata).then(
+                (result) => { resolve(result.entities); },
+                (e) => { reject(e); }
+            );
+        });
+    },
+    /**
      * Exibe um alerta modal na tela
      * @param {string} mensagem - Mensagem a ser exibida
      * @param {string} titulo - titulo do modal
@@ -94,4 +110,34 @@ Demo.Helper = {
             }
         );
     },
+
+
+    GetApi: async function (url) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: "GET",
+                async: true,
+                url: url,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                beforeSend: function (XMLHttpRequest) {
+                    XMLHttpRequest.setRequestHeader("Accept", "application/json");
+                    XMLHttpRequest.setRequestHeader("Prefer", "odata.include-annotations=*");
+                },                
+                success: function (data) {
+                    resolve(data);
+                },
+                error: function (result) {
+                    if (result.responseJSON != undefined && result.responseJSON != null) {
+                        console.log(result.responseJSON);
+                        reject(result.responseJSON.message);
+                    }
+                    else if (result.responseText != null) {
+                        reject(result.responseText)
+                        console.log(result.responseText)
+                    };
+                }
+            });
+        });
+    }
 };
