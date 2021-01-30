@@ -110,7 +110,7 @@ Demo.Contato = {
      * DEMONSTRAÇÃO DO CRUD 
      */
     //https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/xrm-webapi/createrecord
-    Create: async function () {
+    Create: async function (valor) {
         try {
             let idContato = Demo.Contato.formContext.data.entity.getId().replace("{", "").replace("}", "");
             let idConta = Demo.Contato.valConta[0].id.replace("{", "").replace("}", "");
@@ -120,7 +120,7 @@ Demo.Contato = {
             Oportunidade["parentaccountid@odata.bind"] = "/accounts(" + idConta + ")";
             Oportunidade.name = "Limite Credito - " + Demo.Contato.valConta[0].name + " - Potencial grande";
             Oportunidade.purchasetimeframe = 4; //OptionSet - Desconhecido  
-
+            Oportunidade.estimatedvalue = valor;
             //chamada assincrona para criação
             let result = await Demo.Helper.CriarRegistroAsync("opportunity", Oportunidade);
             Demo.Contato.valIdOportunidade = result.id;
@@ -279,7 +279,7 @@ Demo.Contato = {
     ValidarCriacao: function () {
         let limite = Demo.Contato.formContext.getAttribute(Demo.Contato.campoLimiteCredito).getValue();
         if (limite !== null && limite > 5000)
-            Demo.Contato.Create();
+            Demo.Contato.Create(limite);
     },
     TratarErroWebApi: function (e) {
         let retorno = JSON.parse(e.raw);
