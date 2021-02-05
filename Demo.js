@@ -275,6 +275,30 @@ Demo.Contato = {
 
     },
 
+    SolicitarCotacao: async function () {
+        let urlFlow = "https://prod-02.brazilsouth.logic.azure.com:443/workflows/b5bed1a3ed524713b061be61b49a802d/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=RgmmoXtIBVC9v1osI7Piqyg3C8_ACXV0MCW_gkcZqGE";
+       
+        try {
+            
+            let sigla = Demo.Contato.formContext.getAttribute(Demo.Contato.campoSiglaMoeda).getValue();
+            let data = {
+                "siglaMoeda": sigla
+            }
+    
+            let result = await Demo.Helper.POSTAjax(urlFlow, data);
+    
+            let msg = "";
+            msg += "COMPRA: " + result.cotacaoCompra + "\n\n";
+            msg += "VENDA: " + result.cotacaoVenda + "\n\n";
+            msg += "DATA: " + result.dataHoraCotacao + "\n\n";
+            Demo.Helper.ExibirAlertaSemConfirmacao(msg, "COTAÇÃO MOEDA");
+        } catch (error) {
+            Demo.Helper.ExibirAlertaSemConfirmacao(error, "Erro");
+            
+        }
+
+
+    },
 
     ValidarCriacao: function () {
         let limite = Demo.Contato.formContext.getAttribute(Demo.Contato.campoLimiteCredito).getValue();
