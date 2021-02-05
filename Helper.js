@@ -139,5 +139,33 @@ Demo.Helper = {
                 }
             });
         });
+    },
+    POSTAjax: function (url, data) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: "POST",
+                async: true,
+                url: url,
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                beforeSend: function (XMLHttpRequest) {
+                    XMLHttpRequest.setRequestHeader("Accept", "application/json");
+                },
+                success: function (data) {
+                    resolve(data);
+                },
+                error: function (result) {
+                    if (result.responseJSON != undefined && result.responseJSON != null) {
+                        console.log(result.responseJSON);
+                        reject(result.responseJSON.message);
+                    }
+                    else if (result.responseText != null) {
+                        reject(result.responseText)
+                        console.log(result.responseText)
+                    };
+                }
+            });
+        });
     }
 };
