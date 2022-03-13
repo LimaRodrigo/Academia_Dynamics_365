@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Dynamics365.RecursosWeb", "Academia.Dynamics365.RecursosWeb\Academia.Dynamics365.RecursosWeb.csproj", "{4108D5EE-C6C6-4F99-BB45-899AF96C6DF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Dynamics365.Plugins", "Academia.Dynamics365.Plugins\Academia.Dynamics365.Plugins.csproj", "{D4DD310D-88C3-4E1B-B78B-7EF1FFDBD7D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Back-end", "Back-end", "{6B76EDBF-2B3C-451E-B900-6E2EC0C2B0A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Front-End", "Front-End", "{3F953BEC-54A4-437A-B11F-1C95BFD74598}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Dynamics365.ConexaoExterna", "Academia.Dynamics365.ConexaoExterna\Academia.Dynamics365.ConexaoExterna.csproj", "{E718727D-53A4-48DD-A0D9-DE1AE75098BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Power Automate", "Power Automate", "{008C2526-9ABB-450B-8DD5-595F7D401A60}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solução Base", "Solução Base", "{AA5EBD0E-ECB3-4288-A178-B3B50C716D74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4108D5EE-C6C6-4F99-BB45-899AF96C6DF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4108D5EE-C6C6-4F99-BB45-899AF96C6DF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4108D5EE-C6C6-4F99-BB45-899AF96C6DF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4108D5EE-C6C6-4F99-BB45-899AF96C6DF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4DD310D-88C3-4E1B-B78B-7EF1FFDBD7D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4DD310D-88C3-4E1B-B78B-7EF1FFDBD7D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4DD310D-88C3-4E1B-B78B-7EF1FFDBD7D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4DD310D-88C3-4E1B-B78B-7EF1FFDBD7D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E718727D-53A4-48DD-A0D9-DE1AE75098BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E718727D-53A4-48DD-A0D9-DE1AE75098BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E718727D-53A4-48DD-A0D9-DE1AE75098BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E718727D-53A4-48DD-A0D9-DE1AE75098BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4108D5EE-C6C6-4F99-BB45-899AF96C6DF4} = {3F953BEC-54A4-437A-B11F-1C95BFD74598}
+		{D4DD310D-88C3-4E1B-B78B-7EF1FFDBD7D1} = {6B76EDBF-2B3C-451E-B900-6E2EC0C2B0A3}
+		{E718727D-53A4-48DD-A0D9-DE1AE75098BA} = {6B76EDBF-2B3C-451E-B900-6E2EC0C2B0A3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {19925523-4606-4841-8EE5-A5F87E272144}
+	EndGlobalSection
+EndGlobal
