@@ -1,7 +1,8 @@
 // JavaScript source code
 if (typeof (Demo) === "undefined") { Demo = {}; }
+
 // "use strict"
-Demo.Contato = {
+Demo.Contact = {
 
     //Definições de contexto
     formContext: {},
@@ -10,6 +11,8 @@ Demo.Contato = {
 
     //Definição dos Campos
     campoLimiteCredito: "creditlimit",
+    campoCotacaoDolar: "ptr_cotacaodolar",
+    campoLimiteCreditoBr: "ptr_limitedecreditobr",
     campoConta: "parentcustomerid",
     campoPreferenciaContato: "preferredcontactmethodcode",
     campoNome: "firstname",
@@ -31,38 +34,36 @@ Demo.Contato = {
 
     /**
      * Chama todos as funções no carregamento da página
-     * @param {object} formContext 
+     * @param {object} executionContext 
      */
-    OnLoad: function (formContext) {
-        /**
-         * Chamada de atibição do formContext 
-         * https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/executioncontext/getformcontext
-         */
-        Demo.Contato.formContext = formContext.getFormContext();
-        Demo.Contato.OnChange();
-        Demo.Contato.RecuperarValoresTipagem();
+    OnLoad: function (executionContext) {
+        //Chamada de atribuição do formContext 
+        //https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/executioncontext/getformcontext
+        Demo.Contact.formContext = executionContext.getFormContext();
+        Demo.Contact.OnChange();
+        Demo.Contact.RecuperarValoresTipagem();
     },
 
     /**
-     * Função responsável peka configuração dos eventos onchange dos campos, ela deve sempre ser chamada no carregamento da página
+     * Função responsável pela configuração dos eventos de modificações dos campos, ela deve sempre ser chamada no carregamento da página
      */
     OnChange: function () {
         //Adiciona evento onchange em um campo
         //https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/attributes/addonchange
-        Demo.Contato.formContext.getAttribute(Demo.Contato.campoLimiteCredito).addOnChange(Demo.Contato.ValidarCriacao);
-        Demo.Contato.formContext.getAttribute(Demo.Contato.campoTelefoneComercial).addOnChange(Demo.Contato.ValidarTelefone);
-        Demo.Contato.formContext.getAttribute(Demo.Contato.campoFax).addOnChange(Demo.Contato.ValidarFax);
-        Demo.Contato.formContext.getAttribute(Demo.Contato.campoSuspensaoCredito).addOnChange(Demo.Contato.Update);
+        Demo.Contact.formContext.getAttribute(Demo.Contact.campoLimiteCredito).addOnChange(Demo.Contact.ValidarCriacao);
+        Demo.Contact.formContext.getAttribute(Demo.Contact.campoTelefoneComercial).addOnChange(Demo.Contact.ValidarTelefone);
+        Demo.Contact.formContext.getAttribute(Demo.Contact.campoFax).addOnChange(Demo.Contact.ValidarFax);
+        Demo.Contact.formContext.getAttribute(Demo.Contact.campoSuspensaoCredito).addOnChange(Demo.Contact.Update);
 
     },
 
     /**
-     * Função reponsável por chamadas no evento OnSave
-     * @param {object} saveContext 
+     * Função reponsável por chamadas no salvamento da página
+     * @param {object} executionContext 
      */
-    OnSave: function (saveContext) {
-        Demo.Contato.saveContext = saveContext.getFormContext();
-        Demo.Contato.GetDadosApi();
+    OnSave: function (executionContext) {
+        Demo.Contact.saveContext = executionContext.getFormContext();
+        Demo.Contact.GetDadosApi();
     },
 
 
@@ -75,34 +76,34 @@ Demo.Contato = {
 
         //Data
         console.log("**** Data valores ****");
-        Demo.Contato.valAniversario = Demo.Contato.formContext.getAttribute(Demo.Contato.campoAniversario).getValue();
-        console.log(Demo.Contato.valAniversario);
+        Demo.Contact.valAniversario = Demo.Contact.formContext.getAttribute(Demo.Contact.campoAniversario).getValue();
+        console.log(Demo.Contact.valAniversario);
 
         //Booleanos 
         console.log("**** Booleanos valores ****");
-        Demo.Contato.valSuspensaoCredito = Demo.Contato.formContext.getAttribute(Demo.Contato.campoSuspensaoCredito).getValue();
-        console.log(Demo.Contato.valSuspensaoCredito);
+        Demo.Contact.valSuspensaoCredito = Demo.Contact.formContext.getAttribute(Demo.Contact.campoSuspensaoCredito).getValue();
+        console.log(Demo.Contact.valSuspensaoCredito);
 
         //Numericos (Moeda, Decimais e inteiros)
         console.log("**** Númericos valores ****");
-        Demo.Contato.valLimiteCredito = Demo.Contato.formContext.getAttribute(Demo.Contato.campoLimiteCredito).getValue();
-        console.log(Demo.Contato.valLimiteCredito);
+        Demo.Contact.valLimiteCredito = Demo.Contact.formContext.getAttribute(Demo.Contact.campoLimiteCredito).getValue();
+        console.log(Demo.Contact.valLimiteCredito);
 
         //Texto
         console.log("**** Texto valores ****");
-        Demo.Contato.valNome = Demo.Contato.formContext.getAttribute(Demo.Contato.campoNome).getValue();
-        console.log(Demo.Contato.valNome);
+        Demo.Contact.valNome = Demo.Contact.formContext.getAttribute(Demo.Contact.campoNome).getValue();
+        console.log(Demo.Contact.valNome);
 
         //Optionset
         console.log("**** OptionSet valores ****");
-        Demo.Contato.valPreferenciaContato = Demo.Contato.formContext.getAttribute(Demo.Contato.campoPreferenciaContato).getValue();
-        console.log(Demo.Contato.valPreferenciaContato);
-        console.log(Demo.Contato.formContext.getAttribute(Demo.Contato.campoPreferenciaContato).getSelectedOption());
+        Demo.Contact.valPreferenciaContato = Demo.Contact.formContext.getAttribute(Demo.Contact.campoPreferenciaContato).getValue();
+        console.log(Demo.Contact.valPreferenciaContato);
+        console.log(Demo.Contact.formContext.getAttribute(Demo.Contact.campoPreferenciaContato).getSelectedOption());
 
         //Lookup
         console.log("**** LookUp Valores *****");
-        Demo.Contato.valConta = Demo.Contato.formContext.getAttribute(Demo.Contato.campoConta).getValue();
-        console.log(Demo.Contato.valConta);
+        Demo.Contact.valConta = Demo.Contact.formContext.getAttribute(Demo.Contact.campoConta).getValue();
+        console.log(Demo.Contact.valConta);
 
     },
 
@@ -112,18 +113,18 @@ Demo.Contato = {
     //https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/xrm-webapi/createrecord
     Create: async function (valor) {
         try {
-            let idContato = Demo.Contato.formContext.data.entity.getId().replace("{", "").replace("}", "");
-            let idConta = Demo.Contato.valConta[0].id.replace("{", "").replace("}", "");
+            let idContato = Demo.Contact.formContext.data.entity.getId().replace("{", "").replace("}", "");
+            let idConta = Demo.Contact.valConta[0].id.replace("{", "").replace("}", "");
             //Objeto a ser criado
             var Oportunidade = {};
             Oportunidade["parentcontactid@odata.bind"] = "/contacts(" + idContato + ")";
             Oportunidade["parentaccountid@odata.bind"] = "/accounts(" + idConta + ")";
-            Oportunidade.name = "Limite Credito - " + Demo.Contato.valConta[0].name + " - Potencial grande";
+            Oportunidade.name = "Limite Credito - " + Demo.Contact.valConta[0].name + " - Potencial grande";
             Oportunidade.purchasetimeframe = 4; //OptionSet - Desconhecido  
             Oportunidade.estimatedvalue = valor;
             //chamada assincrona para criação
             let result = await Demo.Helper.CriarRegistroAsync("opportunity", Oportunidade);
-            Demo.Contato.valIdOportunidade = result.id;
+            Demo.Contact.valIdOportunidade = result.id;
             let msg = "Registro " + result.id + " Criado!";
             Demo.Helper.ExibirAlertaSemConfirmacao(msg, "Sucesso");
             console.log(result);
@@ -133,11 +134,10 @@ Demo.Contato = {
             Demo.Helper.ExibirAlertaSemConfirmacao(retorno.message, "Erro");
         }
     },
-
     //https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/xrm-webapi/retrieverecord
     Read: async function () {
         try {
-            let Oportunidade = await Demo.Helper.RetornarRegistroAsync("opportunity", Demo.Contato.valIdOportunidade, "?$select=name,purchasetimeframe");
+            let Oportunidade = await Demo.Helper.RetornarRegistroAsync("opportunity", Demo.Contact.valIdOportunidade, "?$select=name,purchasetimeframe");
             let Texto = "Titulo " + Oportunidade.name;
             Texto += "\nPeríodo de Compra " + Oportunidade["purchasetimeframe@OData.Community.Display.V1.FormattedValue"];
             //@OData.Community.Display.V1.FormattedValue - Em caso de campo option set para recupera o label utilizamos essa conotação, 
@@ -145,7 +145,7 @@ Demo.Contato = {
             Demo.Helper.ExibirAlertaSemConfirmacao(Texto, "Oportunidade");
 
         } catch (error) {
-            Demo.Contato.TratarErroWebApi(error);
+            Demo.Contact.TratarErroWebApi(error);
         }
     },
     //https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/xrm-webapi/retrievemultiplerecords
@@ -169,7 +169,7 @@ Demo.Contato = {
             Demo.Helper.ExibirAlertaSemConfirmacao(msg, "RESULTADOS OPORTUNIDADES - Xrm.WebApi", 800, 500);
 
         } catch (error) {
-            Demo.Contato.TratarErroWebApi(error);
+            Demo.Contact.TratarErroWebApi(error);
         }
     },
     //https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/xrm-webapi/updaterecord
@@ -179,20 +179,20 @@ Demo.Contato = {
                 name: "[SUSPENÇÃO DE CREDITO] - Atualizado " + Date.toLocaleString(),
                 statuscode: 2, //OptionSet - SUSPENSO
             };
-            let result = await Demo.Helper.AtualizarRegistroAsync("opportunity", Demo.Contato.valIdOportunidade, Oportunidade);
+            let result = await Demo.Helper.AtualizarRegistroAsync("opportunity", Demo.Contact.valIdOportunidade, Oportunidade);
             let msg = "Registro " + result.id + " Atualizado!";
             Demo.Helper.ExibirAlertaSemConfirmacao(msg, "Oportunidade Atualizada");
         } catch (error) {
-            Demo.Contato.TratarErroWebApi(error);
+            Demo.Contact.TratarErroWebApi(error);
         }
     },
     //https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/xrm-webapi/deleterecord
     Delete: async function () {
         try {
-            await Demo.Helper.DeletarRegistroAsync("opportunity", Demo.Contato.valIdOportunidade);
+            await Demo.Helper.DeletarRegistroAsync("opportunity", Demo.Contact.valIdOportunidade);
             Demo.Helper.ExibirAlertaSemConfirmacao("Registro Deletado", "Sucesso");
         } catch (error) {
-            Demo.Contato.TratarErroWebApi(error);
+            Demo.Contact.TratarErroWebApi(error);
         }
     },
 
@@ -210,14 +210,14 @@ Demo.Contato = {
      * https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/formcontext-ui/setformnotification
      */
     ValidarTelefone: function () {
-        let telefone = Demo.Contato.formContext.getAttribute(Demo.Contato.campoTelefoneComercial).getValue();
+        let telefone = Demo.Contact.formContext.getAttribute(Demo.Contact.campoTelefoneComercial).getValue();
         let pattern = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
 
         if (pattern.test(telefone)) {
-            Demo.Contato.formContext.ui.clearFormNotification("ValidaTel");
+            Demo.Contact.formContext.ui.clearFormNotification("ValidaTel");
         }
         else {
-            Demo.Contato.formContext.ui.setFormNotification("Telefone inválido", "ERROR", "ValidaTel"); //ERROR / WARNING / INFO
+            Demo.Contact.formContext.ui.setFormNotification("Telefone inválido", "ERROR", "ValidaTel"); //ERROR / WARNING / INFO
 
         }
     },
@@ -226,14 +226,14 @@ Demo.Contato = {
      * https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/controls/setnotification
      */
     ValidarFax: function () {
-        let email = Demo.Contato.formContext.getAttribute(Demo.Contato.campoEmail).getValue();
+        let email = Demo.Contact.formContext.getAttribute(Demo.Contact.campoEmail).getValue();
         let pattern = /^[\w-]+(\.[\w-]+)*@(([A-Za-z\d][A-Za-z\d-]{0,61}[A-Za-z\d]\.)+[A-Za-z]{2,6}|\[\d{1,3}(\.\d{1,3}){3}\])$/;
 
         if (pattern.test(email)) {
-            Demo.Contato.formContext.getControl(Demo.Contato.campoEmail).clearNotification("ValidaEmail");
+            Demo.Contact.formContext.getControl(Demo.Contact.campoEmail).clearNotification("ValidaEmail");
         }
         else {
-            Demo.Contato.formContext.getControl(Demo.Contato.campoEmail).setNotification("Email inválido", "ValidaEmail");
+            Demo.Contact.formContext.getControl(Demo.Contact.campoEmail).setNotification("Email inválido", "ValidaEmail");
         }
     },
 
@@ -275,35 +275,12 @@ Demo.Contato = {
 
     },
 
-    SolicitarCotacao: async function () {
-        let urlFlow = "https://prod-02.brazilsouth.logic.azure.com:443/workflows/b5bed1a3ed524713b061be61b49a802d/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=RgmmoXtIBVC9v1osI7Piqyg3C8_ACXV0MCW_gkcZqGE";
-       
-        try {
-            
-            let sigla = Demo.Contato.formContext.getAttribute(Demo.Contato.campoSiglaMoeda).getValue();
-            let data = {
-                "siglaMoeda": sigla
-            }
-    
-            let result = await Demo.Helper.POSTAjax(urlFlow, data);
-    
-            let msg = "";
-            msg += "COMPRA: " + result.cotacaoCompra + "\n\n";
-            msg += "VENDA: " + result.cotacaoVenda + "\n\n";
-            msg += "DATA: " + result.dataHoraCotacao + "\n\n";
-            Demo.Helper.ExibirAlertaSemConfirmacao(msg, "COTAÇÃO MOEDA");
-        } catch (error) {
-            Demo.Helper.ExibirAlertaSemConfirmacao(error, "Erro");
-            
-        }
 
-
-    },
 
     ValidarCriacao: function () {
-        let limite = Demo.Contato.formContext.getAttribute(Demo.Contato.campoLimiteCredito).getValue();
+        let limite = Demo.Contact.formContext.getAttribute(Demo.Contact.campoLimiteCredito).getValue();
         if (limite !== null && limite > 5000)
-            Demo.Contato.Create(limite);
+            Demo.Contact.Create(limite);
     },
     TratarErroWebApi: function (e) {
         let retorno = JSON.parse(e.raw);
