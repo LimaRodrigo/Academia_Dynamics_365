@@ -15,7 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Dynamics365.Conexa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Power Automate", "Power Automate", "{008C2526-9ABB-450B-8DD5-595F7D401A60}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solução Base", "Solução Base", "{AA5EBD0E-ECB3-4288-A178-B3B50C716D74}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solução", "Solução", "{AA5EBD0E-ECB3-4288-A178-B3B50C716D74}"
+	ProjectSection(SolutionItems) = preProject
+		Soluções\Frontend_1_0_0_0.zip = Soluções\Frontend_1_0_0_0.zip
+		Soluções\SoluoBaseAcademia_1_0_0_0.zip = Soluções\SoluoBaseAcademia_1_0_0_0.zip
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
