@@ -20,7 +20,7 @@ Demo.Contact = {
     campoSuspensaoCredito: "creditonhold",
     campoEmail: "emailaddress1",
     campoTelefoneComercial: "telephone1",
-    campoFax: "fax",
+    campoEmail: "emailaddress1",
 
 
     //Valores Globais
@@ -52,7 +52,7 @@ Demo.Contact = {
         //https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/attributes/addonchange
         Demo.Contact.formContext.getAttribute(Demo.Contact.campoLimiteCredito).addOnChange(Demo.Contact.ValidarCriacao);
         Demo.Contact.formContext.getAttribute(Demo.Contact.campoTelefoneComercial).addOnChange(Demo.Contact.ValidarTelefone);
-        Demo.Contact.formContext.getAttribute(Demo.Contact.campoFax).addOnChange(Demo.Contact.ValidarFax);
+        Demo.Contact.formContext.getAttribute(Demo.Contact.campoEmail).addOnChange(Demo.Contact.ValidarEmail);
         Demo.Contact.formContext.getAttribute(Demo.Contact.campoSuspensaoCredito).addOnChange(Demo.Contact.Update);
 
     },
@@ -225,7 +225,7 @@ Demo.Contact = {
      * Notificações do Tipo Form
      * https://docs.microsoft.com/en-us/powerapps/developer/model-driven-apps/clientapi/reference/controls/setnotification
      */
-    ValidarFax: function () {
+    ValidarEmail: function () {
         let email = Demo.Contact.formContext.getAttribute(Demo.Contact.campoEmail).getValue();
         let pattern = /^[\w-]+(\.[\w-]+)*@(([A-Za-z\d][A-Za-z\d-]{0,61}[A-Za-z\d]\.)+[A-Za-z]{2,6}|\[\d{1,3}(\.\d{1,3}){3}\])$/;
 
