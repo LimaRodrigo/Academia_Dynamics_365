@@ -14,9 +14,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Dynamics365.ConexaoExterna", "Academia.Dynamics365.ConexaoExterna\Academia.Dynamics365.ConexaoExterna.csproj", "{E718727D-53A4-48DD-A0D9-DE1AE75098BA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Power Automate", "Power Automate", "{008C2526-9ABB-450B-8DD5-595F7D401A60}"
+	ProjectSection(SolutionItems) = preProject
+		PowerAutomate\ConsultaCNPJ[BASE]_20220319125145.zip = PowerAutomate\ConsultaCNPJ[BASE]_20220319125145.zip
+		PowerAutomate\ConsultarCotação[BASE]_20220319124948.zip = PowerAutomate\ConsultarCotação[BASE]_20220319124948.zip
+		PowerAutomate\NotificaGerenteClienteImportante_20220319142254.zip = PowerAutomate\NotificaGerenteClienteImportante_20220319142254.zip
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solução", "Solução", "{AA5EBD0E-ECB3-4288-A178-B3B50C716D74}"
 	ProjectSection(SolutionItems) = preProject
+		Soluções\Backend_1_0_0_0.zip = Soluções\Backend_1_0_0_0.zip
 		Soluções\Frontend_1_0_0_0.zip = Soluções\Frontend_1_0_0_0.zip
 		Soluções\SoluoBaseAcademia_1_0_0_0.zip = Soluções\SoluoBaseAcademia_1_0_0_0.zip
 	EndProjectSection

@@ -1,5 +1,6 @@
 ﻿using Academia.Dynamics365.Backend.Facade;
 using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,10 +56,24 @@ namespace Academia.Dynamics365.Plugins.Contato
         /// <exception cref="InvalidPluginExecutionException"></exception>
         private void Validar(Entity entityContext)
         {
-            if (!entityContext.Contains("ptr_cpf"))
+            tracing.Trace("Entrei na função Validar");
+
+            string cpf = string.Empty;
+
+            //Recupero do Banco
+            Entity contato = serviceGlobal.Retrieve(entityContext.LogicalName, entityContext.Id, new ColumnSet("ptr_cpf"));
+
+            //Caso não venha no contexto, atribuo o valor do banco
+            if (entityContext.Contains("ptr_cpf"))
+                cpf = entityContext["ptr_cpf"].ToString();
+            else if (contato.Contains("ptr_cpf"))
+                cpf = contato["ptr_cpf"].ToString();
+
+
+            if (string.IsNullOrEmpty(cpf))
                 throw new InvalidPluginExecutionException("CPF Inválido!");
 
-            if (!Helper.ValidarCpf(entityContext["ptr_cpf"].ToString()))
+            if (!Helper.ValidarCpf(cpf))
                 throw new InvalidPluginExecutionException("CPF Inválido!");
 
         }
